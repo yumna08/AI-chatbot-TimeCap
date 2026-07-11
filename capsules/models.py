@@ -23,6 +23,8 @@ class Capsule(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     unlock_date = models.DateTimeField()
     tags = models.JSONField(default=list, blank=True)
+    photo = models.ImageField(upload_to='capsule_photos/', blank=True, null=True)
+    ai_caption = models.CharField(max_length=500, blank=True, null=True)
     
     objects = CapsuleManager()
 

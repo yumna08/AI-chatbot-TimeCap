@@ -4,10 +4,12 @@ from django.utils import timezone
 from .models import Capsule
 from .serializers import CapsuleSerializer
 from .permissions import IsOwner
+from rest_framework.parsers import MultiPartParser, FormParser, JSONParser
 
 class CapsuleViewSet(viewsets.ModelViewSet):
     serializer_class = CapsuleSerializer
     permission_classes = [IsAuthenticated, IsOwner]
+    parser_classes = [MultiPartParser, FormParser, JSONParser]
 
     def get_queryset(self):
         user = self.request.user
